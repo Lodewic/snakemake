@@ -186,7 +186,7 @@ class RemoteObject(AbstractRemoteObject):
         with open(self.local_file(), "wb") as blob_file:
             parser = Crc32cCalculator(blob_file)
             self.blob.download_to_file(parser)
-        os.sync()
+        os_sync()
 
         # Compute local hash and verify correct
         if parser.hexdigest() != self.blob.crc32c:
